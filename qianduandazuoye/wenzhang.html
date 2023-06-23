@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>文章</title>
+    <link rel="stylesheet" type="text/css" href="new.css">  <!-- 这一行必不可少，是继承.css文件里面的属性 -->
+	<style>
+		body {
+			background-image: url("image/blue.png");
+            background-size: cover;
+            background-position: center center;
+            background-attachment: fixed;
+		}
+		.container {
+			display: flex;
+			flex-direction: row;
+            opacity: 0.8;
+			/*height: 100vh;*/
+		}
+		.left {
+            width:20%;
+			padding: 10px;
+			background-color: #fffcfc;
+			text-align: center;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+		}
+		.button-group {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: #f5f5f5;
+      border-right: 1px solid #ddd;
+      width: 100%;
+    }
+    .button {
+      padding: 20px;
+    }
+
+    .button button {
+      margin-bottom: 10px;
+      padding: 10px 20px;
+      border: none;
+      color: #fff;
+      background-color: #007bff;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .button button:hover {
+      background-color: #0062cc;
+    }
+
+		.article {
+			width:60%;
+			padding: 10px;
+			background-color: #eee;
+			overflow: hidden;
+		}
+		.article .content {
+			line-height: 1.6;
+			font-size: 16px;
+			margin-bottom: 10px;
+		}
+    .article .content h1{
+      text-align: center;
+    }
+		.article .expand-btn {
+			text-align: right;
+			color: blue;
+			cursor: pointer;
+			display: block;
+		}
+		.right {
+			width:20%;
+			padding: 10px;
+			background-color: #ccc;
+		}
+		.comment-list {
+      margin-top: 20px;
+    }
+    #comment-form {
+  position: fixed;
+  bottom: 0;
+  right:20%;
+  width:60%;
+  z-index: 9999; /* 设置一个足够大的z-index值 */
+  background-color: #4c8792; /* 设置背景色为白色（可选）*/
+  padding: 20px; /* 增加一些内边距（可选）*/
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* 添加一些阴影效果（可选）*/
+}
+#comment-form button{
+  background-color: #307977;
+display: block;
+width:100px;
+height:50px;
+margin: 0 auto;
+font-size:25px;
+font-family: "SimSun", Arial, sans-serif;
+}
+#comment-form #content{
+width:100%;
+
+}
+
+
+    .comment-content{
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+   }
+   .right h2{
+      font-family:"SimSun", Arial, sans-serif;
+   }
+    .comment-block {
+      border: 1px solid #cf1a05;
+      border-radius: 5px;
+      padding: 5px;
+      margin-bottom: 10px;
+      white-space:pre-line;
+    }
+
+    .comment-info {
+      margin-bottom: 10px;
+    }
+
+    .comment-name {
+        color: hsla(246, 90%, 51%, 0.371);
+      font-weight: bold;
+      margin-right: 10px;
+    }
+
+    .comment-time {
+      color: #1b94d9;
+    }
+    .expand-btn {
+  color: blue;
+  cursor: pointer;
+  margin-right: 0px;
+  margin-bottom: 0px;
+}
+	</style>
+</head>
+<body>
+	<div class="container">
+<div class="left">
+
+    <div class="button-group">
+        <div class="button">
+          <button id="like-btn">点赞</button>
+          <span id="like-count" class="counter">0</span>
+        </div>
+        <div class="button">
+          <button id="collect-btn">收藏</button>
+          <span id="collect-count" class="counter">0</span>
+        </div>
+      </div>
+      
+
+</div>
+		<div class="article">
+			<div class="content">
+				<h1 id="Title">西安游玩攻略</h1>
+				<p>西安，古称长安，是中国历史文化名城之一，有着丰富的历史和文化底蕴。来到西安，您可以尽情地感受这个城市的魅力和历史渊源。<br><br>
+
+                    一、交通<br><br>
+                    
+                    西安交通十分便利，高速公路、铁路、航空等多种交通方式都很发达。如果您想要游览西安的景点，可以选择乘坐地铁或公交车，购买一日或两日通票，以便更好地探索这个城市的风光。<br><br>
+                    
+                    二、景点<br><br>
+                    
+                    兵马俑位于西安市郊区，是中国最著名的古代陵墓之一，也是世界知名的文物。兵马俑总面积达60,000平方米，包括三个大型坑和许多附属建筑，其中每个坑里都存放着大量的兵马俑和战车器械。<br><br>
+                    
+                    大雁塔位于西安市南郊，是汉代唐朝时期所建造的一座佛教塔，高64.5米。大雁塔内部有一座独特的木构造大殿，并收藏了许多珍贵的佛教文物。<br><br>
+                    
+                    西安城墙是中国现存规模最大、保存最完整的古代城墙之一，又被称为明城墙。城墙长约14公里，高约12米，是保留最完好的古代城墙之一。游览城墙还可以选择步行或者自行车骑行，非常有趣。<br><br>
+                    
+                    大唐芙蓉园位于西安市临潼区，是以唐代文化和艺术为主题的大型园林景区。游客可以在这里感受到唐代的历史氛围，还可以欣赏许多唐代建筑和园林景观。<br><br>
+                    
+                    南泥湾遗址公园 南泥湾是毛泽东创立的第一个农村革命根据地，而南泥湾遗址公园是依据南泥湾纪念馆修建的一座纪念公园。公园内有许多纪念建筑，还有毛泽东旧居等。<br><br>
+                    
+                    三、美食<br><br>
+                    
+                    西安也是中国著名的美食之都之一，当地的美食特色十分突出。其中最为著名的就是陕西凉皮、肉夹馍、羊肉泡馍等传统小吃。此外，西安的小米皮也是一道非常受欢迎的特色美食。<br><br>
+                    
+                    四、购物<br><br>
+                    
+                    西安市中心有许多商业街和购物中心，如大明宫商业街、华润万家购物广场、西安大唐不夜城等。这些商业区可以满足您的各种购物需求，包括品牌精品、特色手工艺品以及当地特产等。<br><br>
+                    
+                    五、住宿<br><br>
+                    
+                    西安的酒店种类繁多，从经济型酒店到豪华酒店都有。其中最为著名的是位于钟楼周边的钟鼓楼酒店，它位于市中心，交通便利，房间设施完善，服务质量高。</p>
+			</div>
+		</div>
+		<div class="right">
+			<h2>评论</h2>
+            <div class="comment-list" id="comment-list">            
+            </div>
+            <form id="comment-form" onsubmit="submitComment(event)">
+                <!--div>
+                  <label for="name">姓名：</label>
+                  <input type="text" id="name" name="name" placeholder="请输入姓名">
+                </div-->
+                <div>
+                  <label for="content">评论：</label>
+                  <textarea id="content" name="content" rows="5" placeholder="请输入评论"></textarea>
+                </div>
+                <div>
+                  <button type="submit">提交</button>
+                </div>
+              </form>
+              
+
+
+		</div>
+    
+	</div>
+	<script>
+		// 实现点赞和收藏功能
+        var likeCount = 0;
+var collectCount = 0;
+
+document.getElementById("like-btn").addEventListener("click", function() {
+  likeCount += (this.classList.contains("liked") ? -1 : 1);
+  document.getElementById("like-count").textContent = likeCount;
+  this.classList.toggle("liked");
+});
+
+document.getElementById("collect-btn").addEventListener("click", function() {
+  collectCount += (this.classList.contains("collected") ? -1 : 1);
+  document.getElementById("collect-count").textContent = collectCount;
+  this.classList.toggle("collected");
+});
+
+
+var comments = [
+      { name: "路人甲", time: "2023-05-21 10:00:00", content: "这篇攻略真是太棒了！我对其中的内容和观点表示极大的认可。\n\n首先，攻略提供了非常详尽而有用的信息。无论是介绍目的地还是提供旅行建议，每一个细节都被充分考虑到了。攻略作者明显花费了大量时间和精力来研究并收集必要的资料，以确保读者能够获得最准确、最实用的信息。这种专业度和耐心值得称赞。\n\n其次，攻略的结构和组织非常清晰。它按照不同的主题或地点进行分类，使读者能够轻松地找到所需的信息。同时，攻略还提供了清晰的步骤和提示，帮助读者在旅途中更加顺利和便捷。这种系统性和条理性让人感到十分舒适和放心。" },
+      { name: "路人乙", time: "2023-05-21 11:00:00", content: "我对这篇文章有不同的看法。" },
+      // 其他评论
+    ];
+
+    function renderComment(comment) {
+  var commentBlock = document.createElement("div");
+  commentBlock.className = "comment-block";
+  var commentInfo = document.createElement("div");
+  commentInfo.className = "comment-info";
+  commentBlock.appendChild(commentInfo);
+  var name = document.createElement("span");
+  name.className = "comment-name";
+  name.textContent = comment.name;
+  commentInfo.appendChild(name);
+  var time = document.createElement("span");
+  time.className = "comment-time";
+  time.textContent = comment.time;
+  commentInfo.appendChild(time);
+  var content = document.createElement("div");
+  content.className = "comment-content";
+  content.style.wordWrap = "break-word"; // 添加word-wrap属性
+  content.style.overflowWrap = "break-word"; // 添加overflow-wrap属性
+  // 限制评论内容的最大展示长度
+  var maxLength = 50;
+  if (comment.content.length > maxLength) {
+    var shortenedContent = comment.content.substring(0, maxLength) + "…";
+    content.textContent = shortenedContent;
+    // 添加展开按钮
+    var expandBtn = document.createElement("div");
+    expandBtn.className = "expand-btn";
+    expandBtn.textContent = "展开";
+    commentBlock.appendChild(expandBtn);
+    // 展开按钮的点击事件
+    expandBtn.addEventListener("click", function() {
+      if (expandBtn.textContent === "展开") {
+        expandBtn.textContent = "收起";
+        content.textContent = comment.content;
+      } else {
+        expandBtn.textContent = "展开";
+        content.textContent = shortenedContent;
+      }
+    });
+  } else {
+    content.textContent = comment.content;
+  }
+  commentBlock.appendChild(content);
+  var commentList = document.getElementById("comment-list");
+  commentList.appendChild(commentBlock);
+}
+    for (var i = 0; i < comments.length; i++) {
+      renderComment(comments[i]);
+    }
+    function submitComment(event) {
+  event.preventDefault();
+  var contentInput = document.getElementById("content");
+  var content = contentInput.value.trim();
+  // 判断评论内容是否为空
+  if (content === "") {
+    alert("评论不能为空！");
+    return;
+  }
+  var comment = {
+    name: "匿名用户",
+    time: new Date().toLocaleString(),
+    content: content
+  };
+  // 提交新评论到列表中
+  comments.push(comment);
+  // 渲染新评论到页面上
+  renderComment(comment);
+  // 清空评论框
+  contentInput.value = "";
+}
+
+
+
+var commentForm = document.getElementById('comment-form');//隐藏评论区的输入框
+window.addEventListener('mousemove', function(event) {
+  // 获取鼠标当前位置
+  var mouseY = event.clientY;
+  var windowHeight = window.innerHeight;
+  // 判断鼠标是否在窗口底部附近
+  if (mouseY >= windowHeight -200) {
+    commentForm.style.display = 'block'; // 显示评论区域
+  } else {
+    commentForm.style.display = 'none'; // 隐藏评论区域
+  }
+});
+
+
+	</script>
+</body>
+</html>

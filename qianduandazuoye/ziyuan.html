@@ -1,0 +1,265 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>文件上传和下载</title>
+    <link rel="stylesheet" type="text/css" href="new.css">
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background-image: url("image/blue.png");
+            background-size: cover;
+            background-position: center center;
+            background-attachment: fixed;
+      }
+
+      header {
+        background-color: #b414dc;
+        text-align: center;
+        padding: 20px;
+      }
+      
+
+      form {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+        width:100%;
+      }
+
+      form input[type='text'] {
+        width: 500px;
+        height: 40px;
+        padding: 5px;
+        font-size: 16px;
+        border: none;
+        border-radius: 20px;
+        box-shadow: 2px 2px 5px #ccc;
+      }
+
+      form select {
+        width: 150px;
+        height: 40px;
+        margin-left: 20px;
+        padding: 5px;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        box-shadow: 2px 2px 5px #ccc;
+      }
+      
+
+      .file-list {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        padding: 20px;
+      }
+
+      .file-item {
+        width: 200px;
+        margin: 20px;
+        background-color: #F4F4F4;
+        padding: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      .file-item:hover {
+        box-shadow: 2px 2px 5px #ccc;
+      }
+
+      .file-name {
+        font-size: 16px;
+        font-weight: bold;
+        text-decoration: none;
+        color: #333;
+      }
+
+      .file-type {
+        margin-top: 5px;
+        font-size: 12px;
+        color: #999;
+      }
+
+      .file-size {
+        margin-top: 5px;
+        font-size: 12px;
+        color: #999;
+      }
+      #search-button{
+        width:7%;
+        height:40px;
+      }
+    </style>
+  </head>
+  <body>
+
+    <div class="header">   <!-- 标志logo栏 -->
+      <!-- alt是当图片不显示的时候,预备的可替换图片的文本 -->
+    
+     </div>  
+     
+     <div class="top">
+      <div id="title">
+      </div>
+      <div id="touxiang">
+       <image src="./image/moren.jpg" alt="默认头像" />
+      </div>
+      <div id="user" style="width: 10%; height:70px;  background-color:#b414dc;">
+    
+       <a id= "name" href="#">未登录</a>
+       <div class="menu">
+        <ul>
+          <li><a href="#">修改信息</a></li>
+          <li><a href="#">退出登录</a></li>
+        </ul>
+      </div>
+      </div>
+     </div>
+     <form>
+      
+      <input type="text" id="search-input" placeholder="输入关键字搜索">
+      <select id="category-select">
+        <option value="all">全部文件</option>
+        <option value="document">文档</option>
+        <option value="audio">音频</option>
+        <option value="video">视频</option>
+        <option value="image">图片</option>
+      </select>
+      <button type="button" id="search-button">搜索</button>
+    </form>
+
+    
+    <div class="file-list"></div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(() => {
+    const $fileList = $('.file-list');
+    let files = [];
+
+    // 模拟数据
+    for (let i = 1; i <= 20; i++) {
+      let file = {
+        name: `文件${i}.txt`,
+        type: 'document',
+        size: `${Math.floor(Math.random() * 10000)}KB`
+      };
+      if (i % 4 === 0) {
+        file = {
+          name: `文件${i}.mp3`,
+          type: 'audio',
+          size: `${Math.floor(Math.random() * 10000)}KB`
+        };
+      } else if (i % 4 === 1) {
+        file = {
+          name: `文件${i}.mp4`,
+          type: 'video',
+          size: `${Math.floor(Math.random() * 10000)}KB`
+        };
+      } else if (i % 4 === 2) {
+        file = {
+          name: `文件${i}.jpg`,
+          type: 'image',
+          size: `${Math.floor(Math.random() * 10000)}KB`
+        };
+      }
+      files.push(file);
+    }
+
+    // 显示所有文件
+    function showAllFiles() {
+      $fileList.empty();
+      files.forEach((file) => {
+        const $item = $('<div>').addClass('file-item');
+        const $name = $('<a>').attr('href', '#').addClass('file-name').text(file.name);
+        const $type = $('<div>').addClass('file-type').text(file.type);
+        const $size = $('<div>').addClass('file-size').text(file.size);
+        
+        // 添加点击事件监听器
+        $item.click(() => {
+          const confirmed = confirm(`是否下载文件：${file.name}`);
+          if (confirmed) {
+            // 执行下载操作，这里只是一个示例
+            alert(`开始下载文件：${file.name}`);
+          }
+        });
+
+        $item.append($name, $type, $size).appendTo($fileList);
+      });
+    }
+
+    // 根据关键字搜索文件
+    function searchFiles(keyword) {
+      $fileList.empty();
+      files.forEach((file) => {
+        if (file.name.indexOf(keyword) >= 0) {
+          const $item = $('<div>').addClass('file-item');
+          const $name = $('<a>').attr('href', '#').addClass('file-name').text(file.name);
+          const $type = $('<div>').addClass('file-type').text(file.type);
+          const $size = $('<div>').addClass('file-size').text(file.size);
+          
+          // 添加点击事件监听器
+          $item.click(() => {
+            const confirmed = confirm(`是否下载文件：${file.name}`);
+            if (confirmed) {
+              // 执行下载操作，这里只是一个示例
+              alert(`开始下载文件：${file.name}`);
+            }
+          });
+
+          $item.append($name, $type, $size).appendTo($fileList);
+        }
+      });
+    }
+
+    // 根据分类显示文件
+    function showFilesByCategory(category) {
+      $fileList.empty();
+      if (category === 'all') {
+        showAllFiles();
+      } else {
+        files.forEach((file) => {
+          if (file.type === category) {
+            const $item = $('<div>').addClass('file-item');
+            const $name = $('<a>').attr('href', '#').addClass('file-name').text(file.name);
+            const $type = $('<div>').addClass('file-type').text(file.type);
+            const $size = $('<div>').addClass('file-size').text(file.size);
+            
+            // 添加点击事件监听器
+            $item.click(() => {
+              const confirmed = confirm(`是否下载文件：${file.name}`);
+              if (confirmed) {
+                // 执行下载操作，这里只是一个示例
+                alert(`开始下载文件：${file.name}`);
+              }
+            });
+
+            $item.append($name, $type, $size).appendTo($fileList);
+          }
+        });
+      }
+    }
+
+    // 初始化页面，显示所有文件
+    showAllFiles();
+
+    // 绑定搜索按钮的点击事件
+    $('#search-button').on('click', () => {
+      const keyword = $('#search-input').val().trim();
+      searchFiles(keyword);
+    });
+
+    // 绑定分类选择框的改变事件
+    $('#category-select').on('change', () => {
+      const category = $('#category-select').val();
+      showFilesByCategory(category);
+    });
+  });
+</script>
+<script src="log_status.js"></script>
+  </body>
+</html>

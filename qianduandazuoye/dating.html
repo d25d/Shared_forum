@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>论坛</title>
+<link rel="stylesheet" type="text/css" href="new.css">  
+<style>
+     .clearfixx {
+  height: 15%;
+  width: 10%;
+  float:left;
+  }
+
+  
+  .clearfixx .sidemenu {
+  width: 100%;
+  float: left;
+  text-align: center;
+  }
+  
+  /*导航栏*/
+  .sidemenu ul {
+  list-style-type: none;
+  margin: 1px;
+  padding: 0px;
+  width: 100%;
+  background-color: #f1f1f1;
+  height: 60%;
+  }
+  
+  .sidemenu li a {
+  display: block;
+  color: #000;
+  padding: 8px 16px;
+  text-decoration: none;
+  position:relative;
+  }
+  
+  .sidemenu li a.active {
+  background-color: #4CAF50;
+  color: white;
+  }
+
+  .sidemenu li a:active{
+  left:8px;
+  }
+  
+  .sidemenu li a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+  }
+    
+    .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 70%;
+  margin: 0 auto;
+  border: 2px solid #000000;
+  background-color: #7ab9ce; /* 添加一个浅色背景 */
+  background-image: linear-gradient(45deg, #c6f1f9, #bbf1f8); /* 添加背景渐变 */
+  box-shadow: 0px 0px 100px rgba(0, 0, 0, 0.2); /* 添加阴影效果 */
+  }
+  
+  .articles {
+    display: flex;
+    flex-wrap: wrap;
+    column-count: 2;
+    column-gap: 20px;
+    width:70%;
+    margin: 0 auto;
+  }
+  
+  .article {
+    border: 1px solid #000;
+    border-left: 2px solid red;
+    border-right: 2px solid rgb(8, 0, 255);
+    border-radius: 5px; /* 圆角边框 */
+    box-shadow: 0 0 10px rgb(0, 0, 0); /* 阴影边框 */
+    margin: 20px;
+    width: 700px;
+  }
+  
+  .article-title {
+    display: inline-block;
+    font-family: "Courier New", Courier, monospace;
+    box-shadow: 0 0 10px rgb(58, 167, 203); /* 阴影边框 */
+    font-size: 30px;
+    color:#0b0feadd;
+  }
+  
+  .article-info {
+    display: inline-flex;
+    flex-direction: row;
+    width:50%;
+    margin-left:65%;
+    
+  }
+  .article-info .button button{
+   background-color: #FF69B4;
+
+  }
+  #like-btn:before{
+    content: '\2661';
+    font-size: 19px;
+  }
+  #collect-btn:before{
+    content: '\2606';
+    font-size: 19px;
+  }
+  
+  .article-info span {
+    margin-right: 20px;
+  }
+  </style>
+</head>
+<body>
+ <div class="header">   <!-- 标志logo栏 -->
+  <!-- alt是当图片不显示的时候,预备的可替换图片的文本 -->
+  <div id="svid">
+   <form action="">
+    <input id="input" type="text" placeholder="想看些什么">
+    <button id="sbutton">
+     <img src="image/搜索.jpg"/>
+    </button>
+   </form> 
+  </div>
+  
+ </div>  
+ 
+ <div class="top">
+  <div id="title">
+  </div>
+  <div id="touxiang">
+   <image src="./image/moren.jpg" alt="默认头像" height=100%/>
+  </div>
+  <div id="denglu">
+   <form action="denglu.html">
+    <input id="sbutton2" type="submit" value="马上登录">
+   </form>
+  </div>
+ </div>
+
+ <div class="clearfixx">
+  <div class="sidemenu">
+   <ul>
+    <li><a href="default.html" class="active">首   页</a></li>
+    <li><a href="ziyuan.html">共享资源</a></li>
+    <li><a href="dating.html">浏览文章</a></li>
+   </ul>
+  </div>
+  
+
+ </div>
+
+ <div class="container">
+    <div class="articles">
+      <div onclick="window.location.href='wenzhang.html'" class="article">
+        <h2 class="article-title">西安游玩攻略</h2>
+        <div class="article-info">
+
+            <div class="button">
+                <button id="like-btn"></button>
+                <span id="like-count" class="counter">0</span>
+              </div>
+              <div class="button">
+                <button id="collect-btn"></button>
+                <span id="collect-count" class="counter">0</span>
+              </div>
+
+          <!--span class="likes">点赞数：100</span>
+          <span class="favorites">收藏数：50</span-->
+        </div>
+      </div>
+      <div class="article">
+        <h2 class="article-title">如果要学习数据分析，要首先掌握哪些理论知识？</h2>
+        <div class="article-info">
+            <div class="button">
+                <button id="like-btn"></button>
+                <span id="like-count" class="counter">0</span>
+              </div>
+              <div class="button">
+                <button id="collect-btn"></button>
+                <span id="collect-count" class="counter">0</span>
+              </div>
+        </div>
+      </div>
+      <div class="article">
+        <h2 class="article-title">哪些科学知识颠覆了你的三观?</h2>
+        <div class="article-info">
+            <div class="button">
+                <button id="like-btn"></button>
+                <span id="like-count" class="counter">0</span>
+              </div>
+              <div class="button">
+                <button id="collect-btn"></button>
+                <span id="collect-count" class="counter">0</span>
+              </div>
+        </div>
+      </div>
+      <div class="article">
+        <h2 class="article-title">考教资《教育知识与能力》要背吗？</h2>
+        <div class="article-info">
+            <div class="button">
+                <button id="like-btn"></button>
+                <span id="like-count" class="counter">0</span>
+              </div>
+              <div class="button">
+                <button id="collect-btn"></button>
+                <span id="collect-count" class="counter">0</span>
+              </div>
+        </div>
+      </div>
+      <div class="article">
+        <h2 class="article-title">教师资格证：科目二《教育教学知识与能力》全网超详尽干货！</h2>
+        <div class="article-info">
+            <div class="button">
+                <button id="like-btn"></button>
+                <span id="like-count" class="counter">0</span>
+              </div>
+              <div class="button">
+                <button id="collect-btn"></button>
+                <span id="collect-count" class="counter">0</span>
+              </div>
+        </div>
+      </div>
+      <div class="article">
+        <h2 class="article-title">想投身国内的量化交易，应该如何入门？需要掌握怎样的知识体系？</h2>
+        <div class="article-info">
+            <div class="button">
+                <button id="like-btn"></button>
+                <span id="like-count" class="counter">0</span>
+              </div>
+              <div class="button">
+                <button id="collect-btn"></button>
+                <span id="collect-count" class="counter">0</span>
+              </div>
+        </div>
+      </div>
+      <div class="article">
+        <h2 class="article-title">超强烈推荐这40条实用生活小知识</h2>
+        <div class="article-info">
+            <div class="button">
+                <button id="like-btn"></button>
+                <span id="like-count" class="counter">0</span>
+              </div>
+              <div class="button">
+                <button id="collect-btn"></button>
+                <span id="collect-count" class="counter">0</span>
+              </div>
+        </div>
+      </div>
+      <div class="article">
+        <h2 class="article-title">全网最强整理：关于知识体系，这篇就够了！</h2>
+        <div class="article-info">
+            <div class="button">
+                <button id="like-btn"></button>
+                <span id="like-count" class="counter">0</span>
+              </div>
+              <div class="button">
+                <button id="collect-btn"></button>
+                <span id="collect-count" class="counter">0</span>
+              </div>
+        </div>
+      </div>
+      <div class="article">
+        <h2 class="article-title">一文打尽知识图谱（超级干货，建议收藏！）</h2>
+        <div class="article-info">
+            <div class="button">
+                <button id="like-btn"></button>
+                <span id="like-count" class="counter">0</span>
+              </div>
+              <div class="button">
+                <button id="collect-btn"></button>
+                <span id="collect-count" class="counter">0</span>
+              </div>
+        </div>
+      </div>
+      <div class="article">
+        <h2 class="article-title">如何做到“理解知识”</h2>
+        <div class="article-info">
+            <div class="button">
+                <button id="like-btn"></button>
+                <span id="like-count" class="counter">0</span>
+              </div>
+              <div class="button">
+                <button id="collect-btn"></button>
+                <span id="collect-count" class="counter">0</span>
+              </div>
+        </div>
+      </div>
+      <!-- 添加更多的文章 -->
+    </div>
+  </div>
+
+<div>
+   <button onclick="window.location.href='fabu.html'" class="fabu">
+      <p>
+         发布文章
+      </p>
+   </button>
+</div>
+
+ <div class="footer">
+  <p>允公允能</p >
+  <p>日新月异</p >
+ </div>
+ 
+</body>
+<script>
+    // 实现点赞和收藏功能
+
+
+    var likeButtons = document.querySelectorAll(".article #like-btn");
+var collectButtons = document.querySelectorAll(".article #collect-btn");
+
+for (var i = 0; i < likeButtons.length; i++) {
+  likeButtons[i].addEventListener("click", function() {
+    var likeCount = parseInt(this.nextElementSibling.textContent);
+    if (this.classList.contains("liked")) {
+      this.nextElementSibling.textContent = likeCount - 1;
+      this.classList.remove("liked");
+    } else {
+      this.nextElementSibling.textContent = likeCount + 1;
+      this.classList.add("liked");
+    }
+  });
+}
+
+for (var i = 0; i < collectButtons.length; i++) {
+  collectButtons[i].addEventListener("click", function() {
+    var collectCount = parseInt(this.nextElementSibling.textContent);
+    if (this.classList.contains("collected")) {
+      this.nextElementSibling.textContent = collectCount - 1;
+      this.classList.remove("collected");
+    } else {
+      this.nextElementSibling.textContent = collectCount + 1;
+      this.classList.add("collected");
+    }
+  });
+}
+
+
+
+
+
+</script>
+</html>
+
+
+
+
